@@ -1,3 +1,9 @@
 <igniotron-messages></igniotron-messages>
 <igniotron-spinner></igniotron-spinner>
-<router-outlet></router-outlet>
+<router-outlet
+  *ngIf="noodlesStore.noodles$ | async; else noData"
+></router-outlet>
+
+<ng-template #noData>
+  <p class="no-data">No Data Found!</p>
+</ng-template>

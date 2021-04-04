@@ -13,9 +13,7 @@ export class NoodlesCardComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    console.log('Herllo');
-  }
+  ngOnInit(): void {}
 
   onView(): void {
     this.router.navigate(['noodles', this.noodleId + '']);
