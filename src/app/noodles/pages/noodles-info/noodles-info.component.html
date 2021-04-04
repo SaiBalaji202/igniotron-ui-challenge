@@ -1,1 +1,20 @@
-<div class="noodle-info"></div>
+<div class="noodles-info">
+  <section class="noodles-info__header">
+    <img [src]="noodle.Image | safeUrl" [alt]="noodle.Brand" />
+  </section>
+  <section class="noodles-info__body">
+    <ul>
+      <li><strong>Brand: </strong> {{ noodle.Brand | uppercase }}</li>
+      <li><strong>Variety: </strong> {{ noodle.Variety | uppercase }}</li>
+      <li><strong>Style: </strong> {{ noodle.Style | uppercase }}</li>
+      <li><strong>Country: </strong> {{ noodle.Country | uppercase }}</li>
+      <li><strong>Stars: </strong> {{ noodle.Stars }}</li>
+      <li><strong>Top Ten: </strong> {{ noodle["Top Ten"] }}</li>
+    </ul>
+  </section>
+  <section class="noodles-info__footer">
+    <a routerLink="/noodles"
+      ><fa-icon [icon]="faHome"></fa-icon> Back to Home</a
+    >
+  </section>
+</div>
