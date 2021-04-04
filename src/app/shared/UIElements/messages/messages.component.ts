@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'igniotronmessages',
+  selector: 'igniotron-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss'],
 })

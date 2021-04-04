@@ -1,0 +1,8 @@
+<ul class="noodles-list">
+  <li *ngFor="let noodle of noodlesStore.noodles$ | async; let i = index">
+    <igniotron-noodles-card
+      [noodle]="noodle"
+      [noodleId]="i"
+    ></igniotron-noodles-card>
+  </li>
+</ul>

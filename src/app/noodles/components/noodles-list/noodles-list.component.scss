@@ -1,0 +1,10 @@
+@import "styles/abstract/mixins";
+
+.noodles-list {
+  @include flex(row, center, center);
+  margin: 2rem 0;
+
+  & > * {
+    margin: 2rem;
+  }
+}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from './spinner.service';
 
 @Component({
-  selector: 'igniotronspinner',
+  selector: 'igniotron-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.scss'],
 })
