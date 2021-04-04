@@ -1,7 +1,24 @@
-<div class="filters">
-  <input
-    type="text"
-    placeholder="Brand..."
-    (input)="onFilterChange($event.target.value)"
-  />
-</div>
+<ul class="filters">
+  <li class="filter">
+    <label for="filter-text">Filter</label>
+    <input
+      id="filter-text"
+      type="text"
+      placeholder="Brand..."
+      (input)="onFilterChange($event.target.value)"
+    />
+  </li>
+
+  <li class="filter">
+    <label for="stars-sort">Sort by Stars</label>
+    <select name="sort" id="stars-sort" (change)="onSort($event.target.value)">
+      <option
+        [selected]="sortOrder === option"
+        *ngFor="let option of sortOptions"
+        [value]="option"
+      >
+        {{ option }}
+      </option>
+    </select>
+  </li>
+</ul>

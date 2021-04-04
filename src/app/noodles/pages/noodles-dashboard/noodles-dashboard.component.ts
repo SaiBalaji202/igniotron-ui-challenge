@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SortOption } from '@app/noodles/models/sort.model';
 
 @Component({
   selector: 'igniotron-noodles-dashboard',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoodlesDashboardComponent implements OnInit {
   filterText = '';
+  sortOption = SortOption.NONE;
 
   constructor() {}
 
@@ -14,5 +16,9 @@ export class NoodlesDashboardComponent implements OnInit {
 
   updateFilter(value: string): void {
     this.filterText = value?.toLowerCase();
+  }
+
+  updateSortOption(value: SortOption): void {
+    this.sortOption = value;
   }
 }

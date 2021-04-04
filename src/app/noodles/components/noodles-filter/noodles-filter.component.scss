@@ -5,3 +5,18 @@
 .filters {
   text-align: right;
 }
+
+.filter {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+}

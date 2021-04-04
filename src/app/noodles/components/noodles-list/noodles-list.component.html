@@ -1,7 +1,5 @@
 <ul class="noodles-list">
-  <ng-container
-    *ngFor="let noodle of noodlesStore.noodles$ | async; let i = index"
-  >
+  <ng-container *ngFor="let noodle of noodles$ | async; let i = index">
     <li
       *ngIf="
         !filterText || noodle.Brand.trim().toLowerCase().startsWith(filterText)
