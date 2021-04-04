@@ -16,7 +16,7 @@ const routes: Routes = [
       {
         path: ':id',
         component: NoodlesInfoComponent,
-        canActivate: [ValidNoodleIdGuard],
+        // canActivate: [ValidNoodleIdGuard],
       },
     ],
   },
