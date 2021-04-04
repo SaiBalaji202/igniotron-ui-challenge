@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, zip } from 'rxjs';
 import { Noodle, NoodleResp, NoodleImgResp } from '../models/noodles.model';
 import { environment } from './../../../environments/environment';
-import { map, shareReplay, tap, finalize } from 'rxjs/operators';
+import { map, shareReplay, tap, finalize, filter } from 'rxjs/operators';
 import { SpinnerService } from '@shared/UIElements/spinner/spinner.service';
 
 @Injectable({ providedIn: 'root' })
 export class NoodlesStore {
   private noodlesSubject = new BehaviorSubject<Noodle[]>(null);
   noodles$ = this.noodlesSubject.asObservable();
-  load = false;
+  nonEmptyNoodles$ = this.noodles$.pipe(filter((noodles) => !!noodles?.length));
 
   constructor(private http: HttpClient, private loading: SpinnerService) {
     this.fetchNoodles()?.subscribe();
@@ -21,7 +21,6 @@ export class NoodlesStore {
   // //////////////////
   private fetchNoodles(): Observable<Noodle[]> {
     const noodle$ = zip(this.fetchNoodlesData(), this.fetchNoodlesImg()).pipe(
-      tap(() => (this.load = true)),
       map(([noodles, noodleImgs]) =>
         noodles.map((noodle) => {
           const imgIdx = Math.floor(Math.random() * noodleImgs.length);
@@ -36,8 +35,7 @@ export class NoodlesStore {
           };
         })
       ),
-      tap((noodles) => this.noodlesSubject.next(noodles)),
-      finalize(() => (this.load = false))
+      tap((noodles) => this.noodlesSubject.next(noodles))
     );
     return this.loading.spinUntilComplete(noodle$);
   }
@@ -53,7 +51,7 @@ export class NoodlesStore {
   }
 
   // //////////////////
-  // Filter
+  // GETTERS
   // //////////////////
   getNoodle(id: number): Noodle {
     const noodles = this.noodlesSubject.getValue();

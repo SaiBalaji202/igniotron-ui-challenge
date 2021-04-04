@@ -25,7 +25,7 @@ export class ValidNoodleIdGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.noodlesStore.noodles$.pipe(
+    return this.noodlesStore.nonEmptyNoodles$.pipe(
       take(1),
       map((noodles) => {
         const { id } = route.params;
