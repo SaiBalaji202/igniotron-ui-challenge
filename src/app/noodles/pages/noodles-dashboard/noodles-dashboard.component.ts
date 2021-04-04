@@ -8,7 +8,7 @@ import { SortOption } from '@app/noodles/models/sort.model';
 })
 export class NoodlesDashboardComponent implements OnInit {
   filterText = '';
-  sortOption = SortOption.NONE;
+  sortOption = SortOption.DESCENDING;
 
   constructor() {}
 

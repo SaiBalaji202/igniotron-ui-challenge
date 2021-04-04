@@ -8,11 +8,12 @@ import { SortOption } from '@app/noodles/models/sort.model';
 })
 export class NoodlesFilterComponent implements OnInit {
   @Input() filterText = '';
-  @Input() sortOrder = SortOption.DESCENDING;
+  @Input() sortOrder;
 
   @Output() filter = new EventEmitter<string>();
   @Output() starSort = new EventEmitter<SortOption>();
 
+  SortOption = SortOption;
   sortOptions = Object.values(SortOption);
 
   constructor() {}

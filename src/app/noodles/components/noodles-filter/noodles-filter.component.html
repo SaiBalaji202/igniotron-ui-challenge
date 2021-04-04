@@ -13,8 +13,8 @@
     <label for="stars-sort">Sort by Stars</label>
     <select name="sort" id="stars-sort" (change)="onSort($event.target.value)">
       <option
-        [selected]="sortOrder === option"
         *ngFor="let option of sortOptions"
+        [selected]="sortOrder === option"
         [value]="option"
       >
         {{ option }}
