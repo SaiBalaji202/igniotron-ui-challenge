@@ -1,1 +1,7 @@
-<p>noodles-filter works!</p>
+<div class="filters">
+  <input
+    type="text"
+    placeholder="Brand..."
+    (input)="onFilterChange($event.target.value)"
+  />
+</div>

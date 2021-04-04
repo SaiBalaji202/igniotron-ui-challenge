@@ -1,8 +1,16 @@
 <ul class="noodles-list">
-  <li *ngFor="let noodle of noodlesStore.noodles$ | async; let i = index">
-    <igniotron-noodles-card
-      [noodle]="noodle"
-      [noodleId]="i"
-    ></igniotron-noodles-card>
-  </li>
+  <ng-container
+    *ngFor="let noodle of noodlesStore.noodles$ | async; let i = index"
+  >
+    <li
+      *ngIf="
+        !filterText || noodle.Brand.trim().toLowerCase().startsWith(filterText)
+      "
+    >
+      <igniotron-noodles-card
+        [noodle]="noodle"
+        [noodleId]="i"
+      ></igniotron-noodles-card>
+    </li>
+  </ng-container>
 </ul>

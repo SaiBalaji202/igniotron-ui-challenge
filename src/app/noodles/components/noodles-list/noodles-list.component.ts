@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NoodlesStore } from './../../store/noodles.store';
 
 @Component({
@@ -7,6 +7,7 @@ import { NoodlesStore } from './../../store/noodles.store';
   styleUrls: ['./noodles-list.component.scss'],
 })
 export class NoodlesListComponent implements OnInit {
+  @Input() filterText = '';
   constructor(public noodlesStore: NoodlesStore) {}
 
   ngOnInit(): void {}

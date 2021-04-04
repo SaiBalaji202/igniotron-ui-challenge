@@ -1,2 +1,6 @@
 <h1>Igniotron Home</h1>
-<igniotron-noodles-list></igniotron-noodles-list>
+<igniotron-noodles-filter
+  [filterText]="filterText"
+  (filter)="updateFilter($event)"
+></igniotron-noodles-filter>
+<igniotron-noodles-list [filterText]="filterText"></igniotron-noodles-list>
