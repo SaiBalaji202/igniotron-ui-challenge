@@ -1,4 +1,8 @@
-<div class="noodles-card card" (click)="onView()">
+<div
+  class="noodles-card card"
+  [ngClass]="{ error: noodle.Stars < 2 }"
+  (click)="onView()"
+>
   <div class="noodles-card__img">
     <img [src]="noodle.Image | safeUrl" alt="Avatar" />
   </div>

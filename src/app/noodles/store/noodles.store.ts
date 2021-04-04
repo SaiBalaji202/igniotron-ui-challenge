@@ -23,7 +23,15 @@ export class NoodlesStore {
       map(([noodles, noodleImgs]) =>
         noodles.map((noodle) => {
           const imgIdx = Math.floor(Math.random() * noodleImgs.length);
-          return { ...noodle, Image: noodleImgs[imgIdx].Image };
+
+          return {
+            ...noodle,
+            Stars:
+              !noodle.Stars || typeof noodle.Stars === 'number'
+                ? Math.round(noodle.Stars)
+                : 0,
+            Image: noodleImgs[imgIdx].Image,
+          };
         })
       ),
       tap((noodles) => this.noodlesSubject.next(noodles))
