@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SortOption } from '@app/noodles/models/sort.model';
+import { startWith } from 'rxjs/operators';
+import { NoodlesFilterService } from './../../services/noodles-filter.service';
 
 @Component({
   selector: 'igniotron-noodles-filter',
@@ -7,26 +9,18 @@ import { SortOption } from '@app/noodles/models/sort.model';
   styleUrls: ['./noodles-filter.component.scss'],
 })
 export class NoodlesFilterComponent implements OnInit {
-  @Input() filterText = '';
-  @Input() sortOrder;
-
-  @Output() filter = new EventEmitter<string>();
-  @Output() starSort = new EventEmitter<SortOption>();
-
   SortOption = SortOption;
   sortOptions = Object.values(SortOption);
 
-  constructor() {}
+  constructor(public filtersService: NoodlesFilterService) {}
 
   ngOnInit(): void {}
 
   onFilterChange(value: string): void {
-    this.filterText = value?.trim();
-    this.filter.emit(this.filterText);
+    this.filtersService.setFilter('filterText', value?.trim());
   }
 
   onSort(sortOrder: string): void {
-    this.sortOrder = sortOrder as SortOption;
-    this.starSort.emit(this.sortOrder);
+    this.filtersService.setFilter('sortOrder', sortOrder as SortOption);
   }
 }
