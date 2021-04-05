@@ -1,11 +1,11 @@
-<ul class="filters" *ngIf="filtersService.filter$ | async as filter">
+<ul class="filters" *ngIf="filtersService.filters$ | async as filters">
   <li class="filter">
     <label for="filter-text">Filter</label>
     <input
       id="filter-text"
       type="text"
       placeholder="Brand..."
-      [value]="filter.filterText"
+      [value]="filters.filterText"
       (input)="onFilterChange($event.target.value)"
     />
   </li>
@@ -15,7 +15,7 @@
     <select name="sort" id="stars-sort" (change)="onSort($event.target.value)">
       <option
         *ngFor="let option of sortOptions"
-        [selected]="filter.sortOrder === option"
+        [selected]="filters.sortOrder === option"
         [value]="option"
       >
         {{ option }}
